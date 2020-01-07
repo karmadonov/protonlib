@@ -5,6 +5,7 @@ from .consts import (
     PROTOCOL,
     TIER
 )
+from .system import is_connected
 
 
 class ProtonVPN:
@@ -20,7 +21,8 @@ class ProtonVPN:
              protocol: PROTOCOL = PROTOCOL.UDP,
              dns_leak_protection: bool = True,
              custom_dns: str = '',
-             killswitch: bool = False):
+             killswitch: bool = False) -> None:
+        """ Create settings file for a new user """
         user_data = dict(
             username=username,
             password=password,
@@ -32,4 +34,6 @@ class ProtonVPN:
         )
         self.user.update(user_data)
 
-    def connect(self):
+    def is_connected(self) -> bool:
+        """ Return connection status """
+        return self.is_connected()
